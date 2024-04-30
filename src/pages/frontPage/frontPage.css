@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.frontPage {
+    background-color: var(--purple);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 90vh;
+    height: 100%;
+}
+
+.logo {
+    height: 10rem;
+}
+
+.frontPage-header {
+    font-family: var(--header-font);
+    font-size: 2rem;
+    color: var(--pink);
+    margin: 1rem;
+    font-weight: 300;
+}
+
+.frontPage-text {
+    color: #FFFF;
+    font-family: 'Fira Sans', sans-serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 100;
+}

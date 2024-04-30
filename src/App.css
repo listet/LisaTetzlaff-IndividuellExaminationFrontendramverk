@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Sansita One';
+    src: url('./assets/sansita-one/SansitaOne.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@100...900&display=swap');
+
+:root {
+    --purple: #231F42;
+    --pink: #F56B9A;
+    --header-font: 'Sansita One', sans-serif;
+}
