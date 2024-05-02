@@ -2,7 +2,7 @@ import './event.css'
 import { Link } from "react-router-dom"
 // Use param here 
 
-function Event({ data }) {
+function Event({ data, name }) {
 
     function formatDate(dateStr) {
         const parts = dateStr.split(" "); // Delar upp "13 December" till ["13", "December"]
@@ -14,18 +14,20 @@ function Event({ data }) {
     const { day, month } = formatDate(data.when.date);
 
     return (
-        <section className="event-container">
-            <article className='event-date'>
-                <p className='day'>{day}</p>
-                <p className='month'>{month}</p>
-            </article>
-            <article className='event-info'>
-                <h2 className='event-title'>{data.name}</h2>
-                <p className='event-place'>{data.where}</p>
-                <p className='event-time'>{data.when.from} - {data.when.to}</p>
-            </article>
-            <p className='event-price'>{data.price}sek</p>
-        </section>
+        <Link to={`/EventPage/${name}`}>
+            <section className="event-container">
+                <article className='event-date'>
+                    <p className='day'>{day}</p>
+                    <p className='month'>{month}</p>
+                </article>
+                <article className='event-info'>
+                    <h2 className='event-title'>{data.name}</h2>
+                    <p className='event-place'>{data.where}</p>
+                    <p className='event-time'>{data.when.from} - {data.when.to}</p>
+                </article>
+                <p className='event-price'>{data.price}sek</p>
+            </section>
+        </Link>
     )
 }
 

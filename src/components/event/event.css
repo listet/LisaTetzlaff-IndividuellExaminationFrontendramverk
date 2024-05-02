@@ -12,6 +12,7 @@
     color: white;
     max-height: 70vh;
     overflow-y: auto;
+    text-decoration: none;
 }
 
 .event-date {
