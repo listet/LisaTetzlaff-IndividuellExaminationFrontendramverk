@@ -1,10 +1,13 @@
 import React from 'react'
+import MainSection from '../../components/mainSection/MainSection'
 
 function EventPage() {
     return (
-        <div>
-
-        </div>
+        <>
+            <MainSection
+                mainTitle={"Event"}
+            />
+        </>
     )
 }
 

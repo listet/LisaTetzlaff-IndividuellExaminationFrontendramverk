@@ -9,6 +9,7 @@
     color: #FFFF;
     display: flex;
     justify-content: space-around;
+    height: 10vh;
 }
 
 .nav-item {

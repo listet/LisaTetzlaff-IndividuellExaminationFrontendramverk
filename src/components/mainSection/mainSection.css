@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.frontPage {
+.container {
     background-color: var(--purple);
     display: flex;
     flex-direction: column;
@@ -15,22 +15,10 @@
     text-decoration: none;
 }
 
-.logo {
-    height: 10rem;
-}
-
-.frontPage-header {
+.title {
     font-family: var(--header-font);
     font-size: 2rem;
     color: var(--pink);
     margin: 1rem;
     font-weight: 300;
-}
-
-.frontPage-text {
-    color: #FFFF;
-    font-family: 'Fira Sans', sans-serif;
-    font-style: italic;
-    font-size: 22px;
-    font-weight: 100;
 }

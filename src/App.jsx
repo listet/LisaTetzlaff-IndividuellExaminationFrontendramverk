@@ -10,6 +10,7 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<FrontPage />} />
         <Route path="/FrontPage" element={<FrontPage />} />
         <Route path="/EventsPage" element={<EventsPage />} />
         <Route path="/OrdersPage" element={<OrdersPage />} />

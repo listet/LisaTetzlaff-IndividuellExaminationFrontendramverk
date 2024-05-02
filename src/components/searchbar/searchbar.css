@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.searchbar-container {
+    text-align: center;
+}
+
+.searchbar {
+    width: 90vw;
+    background-color: #393555;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    padding: 0.6rem;
+    padding-left: 35px;
+    background-image: url('../../assets/searchIcon.png');
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+}

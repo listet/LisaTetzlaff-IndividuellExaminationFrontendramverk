@@ -1,10 +1,13 @@
 import React from 'react'
+import MainSection from '../../components/mainSection/MainSection'
 
 function OrderPage() {
     return (
-        <div>
-            <h1>OrdersPage</h1>
-        </div>
+        <>
+            <MainSection
+                mainTitle={"Order"}
+            />
+        </>
     )
 }
 

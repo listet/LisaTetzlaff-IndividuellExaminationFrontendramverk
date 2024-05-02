@@ -1,10 +1,20 @@
-import React from 'react'
+import './eventsPage.css'
+import MainSection from '../../components/mainSection/MainSection'
+import Searchbar from '../../components/searchbar/Searchbar'
+import FetchEvents from '../../components/fetchEvents/FetchEvents'
 
 function EventsPage() {
     return (
-        <div>
-            <h1>EventsPage</h1>
-        </div>
+        <>
+            <MainSection
+                mainTitle={"Events"}
+            >
+                <Searchbar />
+                <FetchEvents />
+            </MainSection>
+
+            {/*API - events. komponent? */}
+        </>
     )
 }
 
