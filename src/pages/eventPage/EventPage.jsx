@@ -6,16 +6,14 @@ import useEventStore from '../../store/event-store';
 
 function EventPage() {
 
-    const { id } = useParams();
+    const { name } = useParams();
 
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const response = await axios.get(`https://santosnr6.github.io/Data/events.json`);
-                const events = response.data;
-                const event = events.find(event => event.id === parseInt(id));
+                const response = await axios.get(`https://santosnr6.github.io/Data/events.json?name=${name}`);
+                const event = response.data;
                 if (event) {
-                    useEventStore.getState().addEvent(event); // Use addEvent function to add the event
                     console.log('Fetched event:', event);
                 } else {
                     console.error('Event not found');
@@ -26,10 +24,10 @@ function EventPage() {
         };
 
         fetchEvent();
-    }, [id]);
+    }, [name]);
 
     const events = useEventStore((state) => state.events);
-    const activeEvent = events.find((event) => event.id === parseInt(id)); // Find the active event
+    const activeEvent = events.find((event) => event.name === (name)); // Find the active event
 
     return (
         <>

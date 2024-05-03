@@ -2,7 +2,7 @@ import './event.css'
 import { Link } from "react-router-dom"
 import useEventStore from '../../store/event-store';
 
-function Event({ data }) {
+function Event({ name, data }) {
 
     function formatDate(dateStr) {
         if (dateStr) {
@@ -26,7 +26,7 @@ function Event({ data }) {
     };
 
     return (
-        <Link to={`/EventPage/${data.id}`} className="event-link" onClick={handleClick}>
+        <Link to={`/EventPage/${data.name}`} className="event-link" onClick={handleClick}>
             <section className="event-container">
                 <article className='event-date'>
                     <p className='day'>{day}</p>
