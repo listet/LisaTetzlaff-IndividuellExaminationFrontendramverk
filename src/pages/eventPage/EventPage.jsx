@@ -4,8 +4,8 @@ import axios from 'axios';
 import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store';
 import Counter from '../../components/counter/Counter';
-import Button from '../../components/button/Button';
 import './eventPage.css'
+import Button from '../../components/button/Button';
 
 function EventPage() {
 
@@ -36,9 +36,9 @@ function EventPage() {
         <>
             <MainSection
                 mainTitle={"Event"} >
-                <article className='event-container' >
+                <article className='eventPage-container' >
                     {activeEvent ? (
-                        <article className='event' >
+                        <article className='eventPage-event' >
                             <p>You are about to score some tickets to</p>
                             <h2>{activeEvent.name}</h2>
                             <p>Datum och tid</p>

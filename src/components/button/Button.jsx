@@ -1,11 +1,11 @@
 import React from 'react'
 
-function button() {
+function Button() {
     return (
         <div>
-            <h1>button</h1>
+            <h1>Button</h1>
         </div>
     )
 }
 
-export default button
+export default Button
