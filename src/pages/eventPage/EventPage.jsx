@@ -3,6 +3,9 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store';
+import Counter from '../../components/counter/Counter';
+import Button from '../../components/button/Button';
+import './eventPage.css'
 
 function EventPage() {
 
@@ -35,9 +38,14 @@ function EventPage() {
                 mainTitle={"Event"} >
                 <article className='event-container' >
                     {activeEvent ? (
-                        <div className='event' >
+                        <article className='event' >
+                            <p>You are about to score some tickets to</p>
                             <h2>{activeEvent.name}</h2>
-                        </div>
+                            <p>Datum och tid</p>
+                            <p>plats</p>
+                            <Counter />
+                            <Button />
+                        </article>
                     ) : (
                         <p>Event not found</p>
                     )}
