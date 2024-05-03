@@ -7,6 +7,7 @@
 .event-container {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto 1fr;
     grid-column-gap: 1rem;
     margin: 1rem;
     color: white;
@@ -28,6 +29,11 @@
     border-style: solid;
 }
 
-.event-info {}
+.event-info {
+    grid-row: span 2;
+}
 
-.event-price {}
+.event-price {
+    align-self: flex-end;
+    padding-bottom: 15px;
+}

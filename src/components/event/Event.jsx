@@ -1,20 +1,32 @@
 import './event.css'
 import { Link } from "react-router-dom"
-// Use param here 
+import useEventStore from '../../store/event-store';
 
-function Event({ data, name }) {
+function Event({ data }) {
 
     function formatDate(dateStr) {
-        const parts = dateStr.split(" "); // Delar upp "13 December" till ["13", "December"]
-        const day = parts[0]; // Dagen, "13"
-        const month = parts[1].slice(0, 3); // De första tre bokstäverna i månaden, "Dec"
-        return { day, month }; // Sätter ihop dem igen till "13 Dec"
+        if (dateStr) {
+            const parts = dateStr.split(" ");
+            if (parts.length >= 2) { // Check if parts array has at least two elements
+                const day = parts[0];
+                const month = parts[1].slice(0, 3); // Slice the month if it exists
+                return { day, month };
+            }
+        }
+        // If dateStr is not defined or doesn't have expected format, return empty strings
+        return { day: "", month: "" };
     }
 
-    const { day, month } = formatDate(data.when.date);
+    const { day, month } = formatDate(data.when?.date);
+
+    const setActiveEvent = useEventStore((state) => state.setActiveEvent);
+
+    const handleClick = () => {
+        setActiveEvent(data);
+    };
 
     return (
-        <Link to={`/EventPage/${name}`}>
+        <Link to={`/EventPage/${data.id}`} className="event-link" onClick={handleClick}>
             <section className="event-container">
                 <article className='event-date'>
                     <p className='day'>{day}</p>
@@ -23,7 +35,7 @@ function Event({ data, name }) {
                 <article className='event-info'>
                     <h2 className='event-title'>{data.name}</h2>
                     <p className='event-place'>{data.where}</p>
-                    <p className='event-time'>{data.when.from} - {data.when.to}</p>
+                    <p className='event-time'>{data.when?.from} - {data.when?.to}</p>
                 </article>
                 <p className='event-price'>{data.price}sek</p>
             </section>

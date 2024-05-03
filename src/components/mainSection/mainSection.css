@@ -13,6 +13,7 @@
     width: 100%;
     height: 90vh;
     text-decoration: none;
+    overflow: auto;
 }
 
 .title {
