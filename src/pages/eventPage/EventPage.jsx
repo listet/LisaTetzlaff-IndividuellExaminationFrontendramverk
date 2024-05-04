@@ -15,9 +15,11 @@ function EventPage() {
         const fetchEvent = async () => {
             try {
                 const response = await axios.get(`https://santosnr6.github.io/Data/events.json?name=${name}`);
-                const event = response.data;
+                const events = response.data.events;
+                const event = events.find(e => e.name === name);
                 if (event) {
                     console.log('Fetched event:', event);
+                    useEventStore.setState({ price: event.price }); // Set the price in the store
                 } else {
                     console.error('Event not found');
                 }
@@ -25,7 +27,6 @@ function EventPage() {
                 console.error('Error fetching event:', error);
             }
         };
-
         fetchEvent();
     }, [name]);
 
@@ -41,8 +42,8 @@ function EventPage() {
                         <article className='eventPage-event' >
                             <p>You are about to score some tickets to</p>
                             <h2>{activeEvent.name}</h2>
-                            <p>Datum och tid</p>
-                            <p>plats</p>
+                            <p>{activeEvent.when.date} {activeEvent.when.from} - {activeEvent.when.to}</p>
+                            <p>{activeEvent.where}</p>
                             <Counter />
                             <Button />
                         </article>

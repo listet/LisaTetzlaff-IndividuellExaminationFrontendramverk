@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.priceAndCounder-container {
+    border: 2px solid var(--pink);
+    margin: 1rem;
+}
+
+.price-container {
+    border-bottom: 2px solid var(--pink);
+    padding: 1rem;
+}
+
+.counter-container {
+    display: flex;
+    justify-content: center;
+}
+
+.counter-btn,
+.event-balance {
+    background-color: var(--purple);
+    padding: 0.5rem 1.5rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    color: white;
+    border-style: none;
+}
