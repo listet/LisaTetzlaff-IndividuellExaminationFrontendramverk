@@ -23,7 +23,7 @@ function Counter() {
     const totalPrice = eventBalance * price;
 
     return (
-        <section className='priceAndCounder-container'>
+        <section className='priceAndCounter-container'>
             <section className='price-container'>
                 <p className="price">{totalPrice} sek</p>
             </section>

@@ -5,14 +5,15 @@
 }
 
 
-.priceAndCounder-container {
+.priceAndCounter-container {
     border: 2px solid var(--pink);
-    margin: 1rem;
+    margin: 1rem 0.5rem;
+    width: 60vw;
 }
 
 .price-container {
     border-bottom: 2px solid var(--pink);
-    padding: 1rem;
+    padding: 2rem;
 }
 
 .counter-container {
@@ -23,10 +24,21 @@
 .counter-btn,
 .event-balance {
     background-color: var(--purple);
-    padding: 0.5rem 1.5rem;
-    margin-right: 1rem;
-    margin-left: 1rem;
     font-size: 1.5rem;
     color: white;
     border-style: none;
+    padding: 1rem 0;
+}
+
+.event-balance {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    flex: 1;
+}
+
+.counter-btn {
+    cursor: pointer;
+    border-left: 2px solid var(--pink);
+    border-right: 2px solid var(--pink);
+    flex: 2;
 }

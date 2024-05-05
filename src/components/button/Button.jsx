@@ -1,9 +1,9 @@
-import React from 'react'
+import './button.css'
 
-function Button() {
+function Button({ buttonText }) {
     return (
         <div>
-            <h1>Button</h1>
+            <button className='cart-button'>{buttonText}</button>
         </div>
     )
 }

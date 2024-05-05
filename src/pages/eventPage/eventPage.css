@@ -5,11 +5,36 @@
 }
 
 .eventPage-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.eventPage-event {
     text-align: center;
     color: white;
+    font-family: fira sans, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 70vh;
+}
+
+.eventPage-info {
+    color: white;
+    margin: 2rem;
+    font-style: italic;
+}
+
+.eventPage-title {
+    font-family: var(--header-font);
+    color: var(--pink);
+    margin: 0.5rem;
+}
+
+.eventPage-date {
+    color: #37AEAB;
+    font-weight: 700;
+}
+
+.eventPage-place {
+    color: white;
+    font-style: italic;
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
 }

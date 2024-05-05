@@ -37,15 +37,15 @@ function EventPage() {
         <>
             <MainSection
                 mainTitle={"Event"} >
-                <article className='eventPage-container' >
+                <article>
                     {activeEvent ? (
-                        <article className='eventPage-event' >
-                            <p>You are about to score some tickets to</p>
-                            <h2>{activeEvent.name}</h2>
-                            <p>{activeEvent.when.date} {activeEvent.when.from} - {activeEvent.when.to}</p>
-                            <p>{activeEvent.where}</p>
+                        <article className='eventPage-container' >
+                            <p className='eventPage-info'>You are about to score some tickets to</p>
+                            <h2 className='eventPage-title'>{activeEvent.name}</h2>
+                            <p className='eventPage-date'>{activeEvent.when.date} {activeEvent.when.from} - {activeEvent.when.to}</p>
+                            <p className='eventPage-place'>@ {activeEvent.where}</p>
                             <Counter />
-                            <Button />
+                            <Button buttonText="Lägg i varukorgen" />
                         </article>
                     ) : (
                         <p>Event not found</p>
