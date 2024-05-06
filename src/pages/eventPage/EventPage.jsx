@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store';
 import Counter from '../../components/counter/Counter';
@@ -13,8 +13,6 @@ function EventPage() {
     const { name } = useParams();
     const addOrder = useEventStore(state => state.addOrder);
     const events = useEventStore((state) => state.events);
-    const price = useEventStore(state => state.price)
-    const quantity = useEventStore(state => state.quantity); // Function to set quantity in store
     const activeEvent = events.find((event) => event.name === (name)); // Find the active event
 
     // useEffect(() => {
@@ -40,8 +38,9 @@ function EventPage() {
     // }, [name]);
 
     const handleAddToCart = () => {
-        console.log("Adding order:", activeEvent, quantity);
-        addOrder(activeEvent, quantity);
+        const currentQuantity = useEventStore.getState().quantity; // Hämta aktuell kvantitet från store
+        console.log("Adding order:", activeEvent, currentQuantity);
+        addOrder(activeEvent, currentQuantity); // Använd den aktuella kvantiteten
     };
 
     return (
@@ -55,7 +54,7 @@ function EventPage() {
                             <h2 className='eventPage-title'>{activeEvent.name}</h2>
                             <p className='eventPage-date'>{activeEvent.when.date} {activeEvent.when.from} - {activeEvent.when.to}</p>
                             <p className='eventPage-place'>@ {activeEvent.where}</p>
-                            <Counter price={activeEvent.price} />
+                            <Counter name={name} price={activeEvent.price} />
                             <Link aria-label='Navigate to orders' to="/OrderPage">
                                 <Button onClick={handleAddToCart} buttonText="Lägg i varukorgen" />
                             </Link>

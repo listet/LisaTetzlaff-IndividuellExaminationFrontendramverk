@@ -2,23 +2,26 @@ import { useState, useEffect } from 'react'
 import './counter.css'
 import useEventStore from '../../store/event-store';
 
-function Counter({ price }) {
+function Counter({ eventId, price }) {
 
     const [eventBalance, setEventBalance] = useState(0);
-    const setQuantity = useEventStore(state => state.setQuantity); // Function to set quantity in store
+    const increaseQty = useEventStore(state => state.increaseQty);
+    const decreaseQty = useEventStore(state => state.decreaseQty);
 
     useEffect(() => {
-        setQuantity(eventBalance);
-    }, [eventBalance, setQuantity]);
+        setEventBalance(0); // Återställ kvantiteten när eventId ändras
+    }, [eventId]);
 
-    const decreaseEventBalance = () => {
+    const handleDecreaseEventBalance = () => {
         if (eventBalance > 0) {
-            setEventBalance(eventBalance - 1);
+            decreaseQty(eventId);
+            setEventBalance(prev => prev - 1);
         }
     };
 
-    const increaseEventBalance = () => {
-        setEventBalance(eventBalance + 1);
+    const handleIncreaseEventBalance = () => {
+        increaseQty(eventId);
+        setEventBalance(prev => prev + 1);
     };
 
     const totalPrice = eventBalance * price;
@@ -31,12 +34,12 @@ function Counter({ price }) {
             <section className='counter-container'>
                 <button
                     className="counter-btn"
-                    onClick={decreaseEventBalance}
+                    onClick={handleDecreaseEventBalance}
                 >-</button>
                 <p className="event-balance">{eventBalance}</p>
                 <button
                     className="counter-btn"
-                    onClick={increaseEventBalance}
+                    onClick={handleIncreaseEventBalance}
                 >+</button>
             </section>
         </section>

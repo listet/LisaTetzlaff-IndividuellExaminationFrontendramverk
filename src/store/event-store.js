@@ -1,37 +1,44 @@
 import { create } from "zustand";
 
-
-//sparar i sessionStorage
-const saveOrders = (orders) => {
-    sessionStorage.setItem('orders', JSON.stringify(orders));
-};
-
-// Hämtar och returnerar data från sessionStorage
-const loadOrders = () => {
-    const savedOrders = sessionStorage.getItem('orders');
-    return savedOrders ? JSON.parse(savedOrders) : [];
-};
-
 //definierar ett antal properties och metoder för att uppdatera dessa properties
 const useEventStore = create((set) => ({
     events: [],
     price: 0,
-    quantity: 0,
-    orders: loadOrders(),
-    setEvents: (newEvents) => set({ events: newEvents }),
+    orders: [],
+    setEvents: (newEvents) => {
+        const eventsQty = newEvents.map(event => ({
+            ...event, qty: 0
+        }));
+        set({ events: eventsQty }) //cart:eventsQty?)
+    },
+    increaseQty: (name) => {
+        set(state => ({
+            events: state.events.map(event => {
+                if (event.name === name) {
+                    return { ...event, qty: event.qty + 1 };
+                }
+                return event;
+            })
+        }));
+    },
+    decreaseQty: (name) => {
+        set(state => ({
+            events: state.events.map(event => {
+                if (event.name === name && event.qty > 0) {
+                    return { ...event, qty: event.qty - 1 };
+                }
+                return event;
+            })
+        }));
+    },
     setPrice: (price) => set({ price }),
-    setQuantity: (quantity) => set({ quantity }),
+    // setQuantity: (quantity) => set({ quantity }),
     clearEvents: () => set({ events: [] }),
     //Lägger till en ny order i listan av orders, sparar den uppdaterade listan i sessionStorage med hjälp av saveOrders, och uppdaterar storen med den nya listan.
-    addOrder: (event, quantity) => set(state => {
-        const newOrders = [...state.orders, { event, quantity }];
-        saveOrders(newOrders);
-        return { orders: newOrders };
-    }),
-    clearOrders: () => {
-        saveOrders([]);
-        return set({ orders: [] });
-    }
+    addOrder: (event, quantity) => set(state => ({
+        orders: [...state.orders, { event, quantity }]
+    })),
+    clearOrders: () => set({ orders: [] })
 }));
 
 export default useEventStore;
