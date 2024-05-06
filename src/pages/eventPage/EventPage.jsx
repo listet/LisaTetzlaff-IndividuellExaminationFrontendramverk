@@ -4,6 +4,7 @@ import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store';
 import Counter from '../../components/counter/Counter';
 import './eventPage.css'
+// import axios from 'axios';
 import Button from '../../components/button/Button';
 import { Link } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ function EventPage() {
     const { name } = useParams();
     const addOrder = useEventStore(state => state.addOrder);
     const events = useEventStore((state) => state.events);
+    const price = useEventStore(state => state.price)
     const quantity = useEventStore(state => state.quantity); // Function to set quantity in store
     const activeEvent = events.find((event) => event.name === (name)); // Find the active event
 
@@ -53,7 +55,7 @@ function EventPage() {
                             <h2 className='eventPage-title'>{activeEvent.name}</h2>
                             <p className='eventPage-date'>{activeEvent.when.date} {activeEvent.when.from} - {activeEvent.when.to}</p>
                             <p className='eventPage-place'>@ {activeEvent.where}</p>
-                            <Counter />
+                            <Counter price={activeEvent.price} />
                             <Link aria-label='Navigate to orders' to="/OrderPage">
                                 <Button onClick={handleAddToCart} buttonText="Lägg i varukorgen" />
                             </Link>
