@@ -18,7 +18,6 @@ function App() {
       try {
         const response = await axios.get(`https://santosnr6.github.io/Data/events.json`)
         setEvents(response.data.events); // Använd setEvents för att uppdatera events i storen
-        const fetchedEvents = response.data.events;
         console.log('Fetched events:', response.data.events);
       } catch (error) {
         console.error('Error fetching events:', error);
