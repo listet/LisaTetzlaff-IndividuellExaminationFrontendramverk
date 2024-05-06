@@ -17,7 +17,7 @@ function OrderPage() {
                         {orders.map((order, index) => (
                             <li key={index}>
                                 <p>{order.event}</p>
-                                <p>{order.event}</p>
+                                <p>{order.quantity}</p>
                             </li>
                         ))}
                     </ul>

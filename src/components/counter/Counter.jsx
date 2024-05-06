@@ -4,8 +4,9 @@ import useEventStore from '../../store/event-store';
 import { Link } from 'react-router-dom';
 import Button from '../button/Button';
 
-function Counter({ eventId, price }) {
+function Counter({ event }) {
 
+    const { price, name } = event;  // Nu kan du extrahera price och name direkt från event objektet
     const [eventBalance, setEventBalance] = useState(0);
     const increaseQty = useEventStore(state => state.increaseQty);
     const decreaseQty = useEventStore(state => state.decreaseQty);
@@ -14,21 +15,21 @@ function Counter({ eventId, price }) {
     useEffect(() => {
         // Set initial quantity to 0 when component mounts
         setEventBalance(0);
-    }, [eventId]);
+    }, [name]);
 
     const handleDecreaseEventBalance = () => {
         if (eventBalance > 0) {
-            decreaseQty(eventId);
+            decreaseQty(name);
             setEventBalance(prev => prev - 1);
         }
     };
 
     const handleIncreaseEventBalance = () => {
-        increaseQty(eventId);
+        increaseQty(name);
         setEventBalance(prev => prev + 1);
     };
     const handleAddToCart = () => {
-        addOrder(eventId, eventBalance);
+        addOrder(name, eventBalance);
     };
 
     const totalPrice = eventBalance * price;

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store';
 import Counter from '../../components/counter/Counter';
@@ -14,6 +14,10 @@ function EventPage() {
     const events = useEventStore((state) => state.events);
     const activeEvent = events.find((event) => event.name === (name)); // Find the active event
 
+    useEffect(() => {
+        console.log("EventPage rendered with name:", name);
+    }, [name]);
+
     return (
         <>
             <MainSection
@@ -25,7 +29,7 @@ function EventPage() {
                             <h2 className='eventPage-title'>{activeEvent.name}</h2>
                             <p className='eventPage-date'>{activeEvent.when.date} {activeEvent.when.from} - {activeEvent.when.to}</p>
                             <p className='eventPage-place'>@ {activeEvent.where}</p>
-                            <Counter name={name} price={activeEvent.price} />
+                            <Counter event={activeEvent} />
                         </article>
                     ) : (
                         <p>Event not found</p>

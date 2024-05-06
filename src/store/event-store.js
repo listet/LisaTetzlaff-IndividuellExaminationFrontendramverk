@@ -41,3 +41,19 @@ const useEventStore = create((set) => ({
 }));
 
 export default useEventStore;
+
+// addOrder: (newEvent, quantity) => set((state) => {
+//     const existingOrderIndex = state.orders.findIndex(order => order.event.name === newEvent.name);
+//     if (existingOrderIndex !== -1) {
+//       // Om eventet redan finns, uppdatera endast quantity
+//       const updatedOrders = state.orders.map((order, index) =>
+//         index === existingOrderIndex ? { ...order, quantity: order.quantity + quantity } : order
+//       );
+//       return { orders: updatedOrders };
+//     } else {
+//       // Om eventet inte finns, lägg till det nya eventet
+//       return { orders: [...state.orders, { event: newEvent, quantity }] };
+//     }
+//   }),
+//   // andra states och funktioner
+// }));

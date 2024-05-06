@@ -19,14 +19,8 @@ function Event({ data }) {
 
     const { day, month } = formatDate(data.when?.date);
 
-    const setActiveEvent = useEventStore((state) => state.setActiveEvent);
-
-    const handleClick = () => {
-        setActiveEvent(data);
-    };
-
     return (
-        <Link to={`/EventPage/${data.name}`} className="event-link" onClick={handleClick}>
+        <Link to={`/EventPage/${data.name}`} className="event-link">
             <section className="event-container">
                 <article className='event-date'>
                     <p className='day'>{day}</p>
