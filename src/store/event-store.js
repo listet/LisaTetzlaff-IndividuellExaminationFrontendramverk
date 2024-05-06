@@ -5,9 +5,7 @@ const useEventStore = create((set) => ({
     price: 0,
     quantity: 0,
     orders: [],
-    setEvents: (newEvent) => set((state) => ({
-        events: [...state.events, newEvent]
-    })),
+    setEvents: (newEvents) => set({ events: newEvents }),
     setPrice: (price) => set({ price }),
     setQuantity: (quantity) => set({ quantity }),
     clearEvents: () => set({ events: [] }), // Function to clear events

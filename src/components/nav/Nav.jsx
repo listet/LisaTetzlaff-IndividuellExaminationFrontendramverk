@@ -10,7 +10,7 @@ function Nav() {
             <Link aria-label='Navigate to events' className='nav-item' to="/EventsPage">
                 <p>Events</p>
             </Link>
-            <Link aria-label='Navigate to orders' className='nav-item' to="/OrdersPage">
+            <Link aria-label='Navigate to orders' className='nav-item' to="/OrderPage">
                 <p>Orders</p>
             </Link>
         </nav>

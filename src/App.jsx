@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import FrontPage from './pages/frontPage/FrontPage'
 import EventsPage from './pages/eventsPage/EventsPage'
 import OrderPage from './pages/orderPage/OrderPage'
@@ -11,23 +11,20 @@ import useEventStore from './store/event-store';
 
 function App() {
 
+  const setEvents = useEventStore(state => state.setEvents); // Hämta setEvents från storen
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get(`https://santosnr6.github.io/Data/events.json`)
-        const events = response.data;
-        useEventStore.setState(state => ({
-          ...state,
-          events: events
-        }));
-        console.log('Fetched events:', response.data.events);
+        setEvents(response.data.events); // Använd setEvents för att uppdatera events i storen
       } catch (error) {
         console.error('Error fetching events:', error);
       }
     };
 
     fetchEvents();
-  }, []);
+  }, [setEvents]);
 
   return (
     <>
