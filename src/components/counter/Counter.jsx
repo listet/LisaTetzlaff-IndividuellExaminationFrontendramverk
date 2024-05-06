@@ -6,18 +6,18 @@ function Counter() {
 
     const [eventBalance, setEventBalance] = useState(0);
     const price = useEventStore(state => state.price);
-    console.log('Counter render, price:', price);
+    const setQuantity = useEventStore(state => state.setQuantity); // Function to set quantity in store
 
     const decreaseEventBalance = () => {
         if (eventBalance > 0) {
-            // decreaseCartBalance();
             setEventBalance(b => b - 1);
+            setQuantity(eventBalance - 1);
         }
     }
 
     const increaseEventBalance = () => {
-        // increaseCartBalance();
         setEventBalance(b => b + 1);
+        setQuantity(eventBalance + 1);
     }
 
     const totalPrice = eventBalance * price;

@@ -7,7 +7,7 @@
 .eventPage-container {
     text-align: center;
     color: white;
-    font-family: fira sans, sans-serif;
+    font-family: 'fira sans', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

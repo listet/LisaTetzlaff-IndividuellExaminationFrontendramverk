@@ -6,10 +6,15 @@ import useEventStore from '../../store/event-store';
 import Counter from '../../components/counter/Counter';
 import './eventPage.css'
 import Button from '../../components/button/Button';
+import { Link } from 'react-router-dom';
 
 function EventPage() {
 
     const { name } = useParams();
+    const addOrder = useEventStore(state => state.addOrder);
+    const setQuantity = useEventStore(state => state.setQuantity); // Function to set quantity in store
+    const events = useEventStore((state) => state.events);
+    const activeEvent = events.find((event) => event.name === (name)); // Find the active event
 
     useEffect(() => {
         const fetchEvent = async () => {
@@ -30,8 +35,9 @@ function EventPage() {
         fetchEvent();
     }, [name]);
 
-    const events = useEventStore((state) => state.events);
-    const activeEvent = events.find((event) => event.name === (name)); // Find the active event
+    const handleAddToCart = () => {
+        addOrder(activeEvent, setQuantity);
+    };
 
     return (
         <>
@@ -45,7 +51,9 @@ function EventPage() {
                             <p className='eventPage-date'>{activeEvent.when.date} {activeEvent.when.from} - {activeEvent.when.to}</p>
                             <p className='eventPage-place'>@ {activeEvent.where}</p>
                             <Counter />
-                            <Button buttonText="Lägg i varukorgen" />
+                            <Link aria-label='Navigate to orders' to="/OrderPage">
+                                <Button onClick={handleAddToCart} buttonText="Lägg i varukorgen" />
+                            </Link>
                         </article>
                     ) : (
                         <p>Event not found</p>

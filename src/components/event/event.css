@@ -20,6 +20,8 @@
     margin: 0.5rem;
     padding: 5px;
     height: 8vh;
+    width: 15vw;
+    max-width: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;

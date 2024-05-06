@@ -9,11 +9,13 @@
     border: 2px solid var(--pink);
     margin: 1rem 0.5rem;
     width: 60vw;
+    border-radius: 3px;
 }
 
 .price-container {
     border-bottom: 2px solid var(--pink);
     padding: 2rem;
+
 }
 
 .counter-container {

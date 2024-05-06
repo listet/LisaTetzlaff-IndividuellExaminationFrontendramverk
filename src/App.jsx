@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import FrontPage from './pages/frontPage/FrontPage'
 import EventsPage from './pages/eventsPage/EventsPage'
-import OrdersPage from './pages/orderPage/OrderPage'
+import OrderPage from './pages/orderPage/OrderPage'
 import EventPage from './pages/eventPage/EventPage'
 import Nav from './components/nav/Nav'
 import useEventStore from './store/event-store';
@@ -31,7 +31,7 @@ function App() {
         <Route path="/" element={<FrontPage />} />
         <Route path="/FrontPage" element={<FrontPage />} />
         <Route path="/EventsPage" element={<EventsPage />} />
-        <Route path="/OrdersPage" element={<OrdersPage />} />
+        <Route path="/OrderPage" element={<OrderPage />} />
         <Route path="/EventPage/:name" element={<EventPage />} />
       </Routes>
       <Nav />
