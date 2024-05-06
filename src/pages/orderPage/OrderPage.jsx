@@ -16,8 +16,8 @@ function OrderPage() {
                     <ul className='order-container'>
                         {orders.map((order, index) => (
                             <li key={index}>
-                                <p>{order.event.name}</p>
-                                <p>{order.event.qty}</p>
+                                <p>{order.event}</p>
+                                <p>{order.event}</p>
                             </li>
                         ))}
                     </ul>

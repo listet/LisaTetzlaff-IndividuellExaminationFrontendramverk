@@ -34,7 +34,7 @@ const useEventStore = create((set) => ({
     setPrice: (price) => set({ price }),
     // setQuantity: (quantity) => set({ quantity }),
     clearEvents: () => set({ events: [] }),
-    //Lägger till en ny order i listan av orders, sparar den uppdaterade listan i sessionStorage med hjälp av saveOrders, och uppdaterar storen med den nya listan.
+
     addOrder: (event, quantity) => set(state => ({
         orders: [...state.orders, { event, quantity }]
     })),

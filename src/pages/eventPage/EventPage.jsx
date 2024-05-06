@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 function EventPage() {
 
     const { name } = useParams();
-    const addOrder = useEventStore(state => state.addOrder);
     const events = useEventStore((state) => state.events);
     const activeEvent = events.find((event) => event.name === (name)); // Find the active event
 
@@ -37,12 +36,6 @@ function EventPage() {
     //     fetchEvent();
     // }, [name]);
 
-    const handleAddToCart = () => {
-        const currentQuantity = useEventStore.getState().quantity; // Hämta aktuell kvantitet från store
-        console.log("Adding order:", activeEvent, currentQuantity);
-        addOrder(activeEvent, currentQuantity); // Använd den aktuella kvantiteten
-    };
-
     return (
         <>
             <MainSection
@@ -55,9 +48,6 @@ function EventPage() {
                             <p className='eventPage-date'>{activeEvent.when.date} {activeEvent.when.from} - {activeEvent.when.to}</p>
                             <p className='eventPage-place'>@ {activeEvent.where}</p>
                             <Counter name={name} price={activeEvent.price} />
-                            <Link aria-label='Navigate to orders' to="/OrderPage">
-                                <Button onClick={handleAddToCart} buttonText="Lägg i varukorgen" />
-                            </Link>
                         </article>
                     ) : (
                         <p>Event not found</p>
