@@ -32,7 +32,6 @@ const useEventStore = create((set) => ({
         }));
     },
     setPrice: (price) => set({ price }),
-    // setQuantity: (quantity) => set({ quantity }),
     clearEvents: () => set({ events: [] }),
 
     addOrder: (event, quantity) => set(state => ({

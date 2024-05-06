@@ -5,36 +5,14 @@ import useEventStore from '../../store/event-store';
 import Counter from '../../components/counter/Counter';
 import './eventPage.css'
 // import axios from 'axios';
-import Button from '../../components/button/Button';
-import { Link } from 'react-router-dom';
+// import Button from '../../components/button/Button';
+// import { Link } from 'react-router-dom';
 
 function EventPage() {
 
     const { name } = useParams();
     const events = useEventStore((state) => state.events);
     const activeEvent = events.find((event) => event.name === (name)); // Find the active event
-
-    // useEffect(() => {
-    //     const fetchEvent = async () => {
-    //         try {
-    //             const response = await axios.get(`https://santosnr6.github.io/Data/events.json?name=${name}`);
-    //             const fetchedEvents = response.data.events;
-    //             const event = fetchedEvents.find(e => e.name === name);
-    //             if (event) {
-    //                 console.log('Fetched event:', event);
-    //                 useEventStore.setState(state => ({
-    //                     events: [...state.events, event], // Lägg till det nya eventet till den befintliga listan av events
-    //                     price: event.price
-    //                 }));
-    //             } else {
-    //                 console.error('Event not found');
-    //             }
-    //         } catch (error) {
-    //             console.error('Error fetching event:', error);
-    //         }
-    //     };
-    //     fetchEvent();
-    // }, [name]);
 
     return (
         <>

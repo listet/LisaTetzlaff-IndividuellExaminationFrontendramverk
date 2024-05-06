@@ -12,7 +12,8 @@ function Counter({ eventId, price }) {
     const addOrder = useEventStore(state => state.addOrder);
 
     useEffect(() => {
-        setEventBalance(0); // Återställ kvantiteten när eventId ändras
+        // Set initial quantity to 0 when component mounts
+        setEventBalance(0);
     }, [eventId]);
 
     const handleDecreaseEventBalance = () => {
@@ -26,7 +27,6 @@ function Counter({ eventId, price }) {
         increaseQty(eventId);
         setEventBalance(prev => prev + 1);
     };
-
     const handleAddToCart = () => {
         addOrder(eventId, eventBalance);
     };

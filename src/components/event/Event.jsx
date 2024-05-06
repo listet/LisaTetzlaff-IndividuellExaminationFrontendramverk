@@ -2,7 +2,7 @@ import './event.css'
 import { Link } from "react-router-dom"
 import useEventStore from '../../store/event-store';
 
-function Event({ name, data }) {
+function Event({ data }) {
 
     function formatDate(dateStr) {
         if (dateStr) {
