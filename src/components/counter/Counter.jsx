@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './counter.css'
 import useEventStore from '../../store/event-store';
 
@@ -8,17 +8,19 @@ function Counter() {
     const price = useEventStore(state => state.price);
     const setQuantity = useEventStore(state => state.setQuantity); // Function to set quantity in store
 
+    useEffect(() => {
+        setQuantity(eventBalance);
+    }, [eventBalance]);
+
     const decreaseEventBalance = () => {
         if (eventBalance > 0) {
-            setEventBalance(b => b - 1);
-            setQuantity(eventBalance - 1);
+            setEventBalance(eventBalance - 1);
         }
-    }
+    };
 
     const increaseEventBalance = () => {
-        setEventBalance(b => b + 1);
-        setQuantity(eventBalance + 1);
-    }
+        setEventBalance(eventBalance + 1);
+    };
 
     const totalPrice = eventBalance * price;
 

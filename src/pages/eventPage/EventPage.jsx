@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store';
@@ -12,19 +12,22 @@ function EventPage() {
 
     const { name } = useParams();
     const addOrder = useEventStore(state => state.addOrder);
-    const setQuantity = useEventStore(state => state.setQuantity); // Function to set quantity in store
     const events = useEventStore((state) => state.events);
+    const quantity = useEventStore(state => state.quantity); // Function to set quantity in store
     const activeEvent = events.find((event) => event.name === (name)); // Find the active event
 
     useEffect(() => {
         const fetchEvent = async () => {
             try {
                 const response = await axios.get(`https://santosnr6.github.io/Data/events.json?name=${name}`);
-                const events = response.data.events;
-                const event = events.find(e => e.name === name);
+                const fetchedEvents = response.data.events;
+                const event = fetchedEvents.find(e => e.name === name);
                 if (event) {
                     console.log('Fetched event:', event);
-                    useEventStore.setState({ price: event.price }); // Set the price in the store
+                    useEventStore.setState(state => ({
+                        events: [...state.events, event], // Lägg till det nya eventet till den befintliga listan av events
+                        price: event.price
+                    }));
                 } else {
                     console.error('Event not found');
                 }
@@ -36,7 +39,8 @@ function EventPage() {
     }, [name]);
 
     const handleAddToCart = () => {
-        addOrder(activeEvent, setQuantity);
+        console.log("Adding order:", activeEvent, quantity);
+        addOrder(activeEvent, quantity);
     };
 
     return (

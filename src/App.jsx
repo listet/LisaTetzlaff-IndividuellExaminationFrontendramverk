@@ -15,7 +15,11 @@ function App() {
     const fetchEvents = async () => {
       try {
         const response = await axios.get(`https://santosnr6.github.io/Data/events.json`)
-        useEventStore.setState({ events: response.data.events });
+        const events = response.data;
+        useEventStore.setState(state => ({
+          ...state,
+          events: events
+        }));
         console.log('Fetched events:', response.data.events);
       } catch (error) {
         console.error('Error fetching events:', error);
