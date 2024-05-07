@@ -11,11 +11,10 @@ import './eventPage.css'
 function EventPage() {
 
     const { name } = useParams();
-    const events = useEventStore((state) => state.events);
+    // const events = useEventStore((state) => state.events);
     const { event } = useEventStore((state) => ({
         event: state.event,
     }));
-    // const activeEvent = events.find((event) => event.name === (name)); // Find the active event
 
     useEffect(() => {
         console.log("EventPage rendered with name:", name);

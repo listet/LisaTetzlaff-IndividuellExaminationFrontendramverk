@@ -1,7 +1,6 @@
 import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store'
 import './orderPage.css'
-import { useState } from 'react';
 
 function OrderPage() {
 

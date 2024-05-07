@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import FrontPage from './pages/frontPage/FrontPage'
 import EventsPage from './pages/eventsPage/EventsPage'
 import OrderPage from './pages/orderPage/OrderPage'

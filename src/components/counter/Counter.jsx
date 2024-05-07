@@ -15,7 +15,7 @@ function Counter({ event }) {
 
 
     const handleDecreaseEventBalance = () => {
-        if (event.qty > 1) {
+        if (event.qty > 0) {
             const newQuantity = event.qty - 1;
             setEvent({ ...event, qty: newQuantity });
         }
