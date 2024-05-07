@@ -12,7 +12,10 @@ function EventPage() {
 
     const { name } = useParams();
     const events = useEventStore((state) => state.events);
-    const activeEvent = events.find((event) => event.name === (name)); // Find the active event
+    const { event } = useEventStore((state) => ({
+        event: state.event,
+    }));
+    // const activeEvent = events.find((event) => event.name === (name)); // Find the active event
 
     useEffect(() => {
         console.log("EventPage rendered with name:", name);
@@ -23,13 +26,13 @@ function EventPage() {
             <MainSection
                 mainTitle={"Event"} >
                 <article>
-                    {activeEvent ? (
+                    {event ? (
                         <article className='eventPage-container' >
                             <p className='eventPage-info'>You are about to score some tickets to</p>
-                            <h2 className='eventPage-title'>{activeEvent.name}</h2>
-                            <p className='eventPage-date'>{activeEvent.when.date} {activeEvent.when.from} - {activeEvent.when.to}</p>
-                            <p className='eventPage-place'>@ {activeEvent.where}</p>
-                            <Counter event={activeEvent} />
+                            <h2 className='eventPage-title'>{event.name}</h2>
+                            <p className='eventPage-date'>{event.when.date} {event.when.from} - {event.when.to}</p>
+                            <p className='eventPage-place'>@ {event.where}</p>
+                            <Counter event={event} />
                         </article>
                     ) : (
                         <p>Event not found</p>

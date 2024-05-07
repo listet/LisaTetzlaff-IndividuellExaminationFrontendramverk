@@ -6,33 +6,54 @@ import Button from '../button/Button';
 
 function Counter({ event }) {
 
-    const { price, name } = event;  // Nu kan du extrahera price och name direkt från event objektet
+    // const { price, name } = event;  // Nu kan du extrahera price och name direkt från event objektet
     const [eventBalance, setEventBalance] = useState(0);
-    const increaseQty = useEventStore(state => state.increaseQty);
-    const decreaseQty = useEventStore(state => state.decreaseQty);
-    const addOrder = useEventStore(state => state.addOrder);
+
+    const { increaseQty, decreaseQty, setOrders, orders } = useEventStore((state) => ({
+        increaseQty: state.increaseQty,
+        decreaseQty: state.decreaseQty,
+        orders: state.orders,
+        setOrders: state.setOrders,
+    }));
+
+    // const increaseQty = useEventStore(state => state.increaseQty);
+    // const decreaseQty = useEventStore(state => state.decreaseQty);
+    // const addOrder = useEventStore(state => state.addOrder);
 
     useEffect(() => {
         // Set initial quantity to 0 when component mounts
         setEventBalance(0);
-    }, [name]);
+    }, [event.name]);
 
     const handleDecreaseEventBalance = () => {
         if (eventBalance > 0) {
-            decreaseQty(name);
+            decreaseQty(event.name);
             setEventBalance(prev => prev - 1);
         }
     };
 
     const handleIncreaseEventBalance = () => {
-        increaseQty(name);
+        increaseQty(event.name);
         setEventBalance(prev => prev + 1);
     };
     const handleAddToCart = () => {
-        addOrder(name, eventBalance);
-    };
 
-    const totalPrice = eventBalance * price;
+        const existingOrder = orders.find(order => order.name === event.name);
+        if (existingOrder) {
+            console.log(orders)
+            // Om eventet redan finns, uppdatera endast quantity
+            const updatedOrders = orders.map(order =>
+                order.name === event.name ? { ...order, qty: order.qty + qty } : order
+            );
+            setOrders(updatedOrders);
+        } else {
+            // Om eventet inte finns, lägg till det nya eventet
+            setOrders([...orders, { event, qty }]);
+        }
+
+    };
+    console.log(orders)
+    const totalPrice = eventBalance * event.price;
 
     return (
         <>

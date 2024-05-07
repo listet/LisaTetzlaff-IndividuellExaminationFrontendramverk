@@ -3,6 +3,7 @@ import { create } from "zustand";
 //definierar ett antal properties och metoder för att uppdatera dessa properties
 const useEventStore = create((set) => ({
     events: [],
+    event: {},
     price: 0,
     orders: [],
     setEvents: (newEvents) => {
@@ -11,6 +12,10 @@ const useEventStore = create((set) => ({
         }));
         set({ events: eventsQty }) //cart:eventsQty?)
     },
+    setEvent: (newEvent) => {
+        set({ event: newEvent })
+    },
+    setOrders: (newOrder) => set({ orders: newOrder }),
     increaseQty: (name) => {
         set(state => ({
             events: state.events.map(event => {
@@ -29,31 +34,30 @@ const useEventStore = create((set) => ({
                 }
                 return event;
             })
+            // addOrder: (event, quantity) => set(state => {
+            //     console.log(event)
+            //     const existingOrder = state.orders.find(order => order.event.name === event.name);
+            //     if (existingOrder) {
+            //         console.log(state.orders)
+            //         // Om eventet redan finns, uppdatera endast quantity
+            //         const updatedOrders = state.orders.map(order =>
+            //             order.event.name === event.name ? { ...order, quantity: order.quantity + quantity } : order
+            //         );
+            //         return { orders: updatedOrders };
+            //     } else {
+            //         // Om eventet inte finns, lägg till det nya eventet
+            //         return { orders: [...state.orders, { event, quantity }] };
+            //     }
+            // }),
         }));
     },
     setPrice: (price) => set({ price }),
     clearEvents: () => set({ events: [] }),
-
-    addOrder: (event, quantity) => set(state => ({
-        orders: [...state.orders, { event, quantity }]
-    })),
-    clearOrders: () => set({ orders: [] })
+    clearOrders: () => set({ orders: [] }),
 }));
 
 export default useEventStore;
 
-// addOrder: (newEvent, quantity) => set((state) => {
-//     const existingOrderIndex = state.orders.findIndex(order => order.event.name === newEvent.name);
-//     if (existingOrderIndex !== -1) {
-//       // Om eventet redan finns, uppdatera endast quantity
-//       const updatedOrders = state.orders.map((order, index) =>
-//         index === existingOrderIndex ? { ...order, quantity: order.quantity + quantity } : order
-//       );
-//       return { orders: updatedOrders };
-//     } else {
-//       // Om eventet inte finns, lägg till det nya eventet
-//       return { orders: [...state.orders, { event: newEvent, quantity }] };
-//     }
-//   }),
-//   // andra states och funktioner
-// }));
+// addOrder: (event, quantity) => set(state => ({
+//     orders: [...state.orders, { event, quantity }]
+// })),
