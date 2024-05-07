@@ -12,7 +12,7 @@ import useEventStore from './store/event-store';
 function App() {
 
   const setEvents = useEventStore(state => state.setEvents); // Hämta setEvents från storen
-  const events = useEventStore(state => state.events);
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -25,7 +25,7 @@ function App() {
     };
 
     fetchEvents();
-  }, [setEvents]);
+  }, []);
 
   return (
     <>

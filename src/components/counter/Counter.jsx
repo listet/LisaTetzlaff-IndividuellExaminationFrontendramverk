@@ -9,11 +9,12 @@ function Counter({ event }) {
     // const { price, name } = event;  // Nu kan du extrahera price och name direkt från event objektet
     const [eventBalance, setEventBalance] = useState(0);
 
-    const { increaseQty, decreaseQty, setOrders, orders } = useEventStore((state) => ({
+    const { increaseQty, decreaseQty, setOrders, orders, setEvent } = useEventStore((state) => ({
         increaseQty: state.increaseQty,
         decreaseQty: state.decreaseQty,
         orders: state.orders,
         setOrders: state.setOrders,
+        setEvent: state.setEvent,
     }));
 
     // const increaseQty = useEventStore(state => state.increaseQty);
@@ -26,34 +27,44 @@ function Counter({ event }) {
     }, [event.name]);
 
     const handleDecreaseEventBalance = () => {
-        if (eventBalance > 0) {
-            decreaseQty(event.name);
-            setEventBalance(prev => prev - 1);
+        if (event.qty > 1) {
+            const newQuantity = event.qty - 1;
+            setEvent({ ...event, qty: newQuantity });
         }
+
+        // if (eventBalance > 0) {
+        //     decreaseQty(event.name);
+        //     setEventBalance(prev => prev - 1);
+        // }
     };
 
     const handleIncreaseEventBalance = () => {
-        increaseQty(event.name);
-        setEventBalance(prev => prev + 1);
+        const newQuantity = event.qty + 1;
+        setEvent({ ...event, qty: newQuantity });
+        // increaseQty(event.name);
+        // setEventBalance(prev => prev + 1);
     };
     const handleAddToCart = () => {
+        // const existingOrder = orders.find(order => order.name === event.name);
+        const existingOrderIndex = orders.findIndex(order => order.id === event.id);
 
-        const existingOrder = orders.find(order => order.name === event.name);
-        if (existingOrder) {
-            console.log(orders)
+        if (existingOrderIndex !== -1) {
+
+            const orderCopy = [...orders];
+            orderCopy[existingOrderIndex].qty = event.qty;
             // Om eventet redan finns, uppdatera endast quantity
-            const updatedOrders = orders.map(order =>
-                order.name === event.name ? { ...order, qty: order.qty + qty } : order
-            );
-            setOrders(updatedOrders);
+            // const updatedOrders = orders.map(order =>
+            //     order.name === event.name ? { ...order, qty: order.qty + qty } : order
+            // );
+            setOrders(orderCopy);
         } else {
             // Om eventet inte finns, lägg till det nya eventet
-            setOrders([...orders, { event, qty }]);
+            setOrders([...orders, { ...event }]);
         }
 
     };
-    console.log(orders)
-    const totalPrice = eventBalance * event.price;
+
+    const totalPrice = event.qty * event.price;
 
     return (
         <>
@@ -66,7 +77,7 @@ function Counter({ event }) {
                         className="counter-btn"
                         onClick={handleDecreaseEventBalance}
                     >-</button>
-                    <p className="event-balance">{eventBalance}</p>
+                    <p className="event-balance">{event.qty}</p>
                     <button
                         className="counter-btn"
                         onClick={handleIncreaseEventBalance}
