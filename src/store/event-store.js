@@ -6,6 +6,7 @@ const useEventStore = create((set) => ({
     event: {},
     price: 0,
     orders: [],
+    order: {},
     setEvents: (newEvents) => {
         const eventsQty = newEvents.map(event => ({
             ...event, qty: 0
@@ -15,13 +16,22 @@ const useEventStore = create((set) => ({
     setEvent: (newEvent) => {
         set({ event: newEvent })
     },
-    setOrders: (newOrder) => set({ orders: newOrder }),
+    setOrders: (newOrders) => {
+        set({ orders: newOrders })
+    },
+    setOrder: (newOrder) => {
+        set({ order: newOrder })
+    },
     setPrice: (price) => set({ price }),
     clearEvents: () => set({ events: [] }),
     clearOrders: () => set({ orders: [] }),
 }));
 
 export default useEventStore;
+
+
+// setOrders: (newOrder) => set({ orders: newOrder }),
+
 
 // increaseQty: (name) => {
 //     set(state => ({
