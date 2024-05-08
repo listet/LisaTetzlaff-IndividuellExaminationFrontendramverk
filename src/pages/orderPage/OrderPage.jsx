@@ -3,7 +3,7 @@ import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store'
 import { Link } from 'react-router-dom';
 import './orderPage.css'
-import TicketId from '../../components/ticketId/TicketId';
+import { TicketId } from '../../components/ticketId/TicketId';
 
 function OrderPage() {
 
@@ -35,9 +35,22 @@ function OrderPage() {
     }, 0);
 
     const handleSetTickets = () => {
-        setTickets(orders);
+        const newTickets = [];
+        // Generate unique IDs for each ticket and create tickets based on quantity
+        orders.forEach(order => {
+            for (let i = 0; i < order.qty; i++) {
+                newTickets.push({
+                    ...order,
+                    id: TicketId(), // Generate a unique ID for each ticket
+                });
+            }
+        });
+        // Store tickets in the store
+        setTickets(newTickets);
+        // Clear orders
         setOrders([]);
     }
+
 
     return (
         <>

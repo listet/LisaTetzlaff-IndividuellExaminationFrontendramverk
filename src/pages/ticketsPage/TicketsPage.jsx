@@ -4,6 +4,7 @@ import './ticketsPage.css'
 function TicketsPage() {
 
     const tickets = useEventStore(state => state.tickets);
+    console.log(tickets)
 
     return (
         <div className="tickets-container">
@@ -14,9 +15,8 @@ function TicketsPage() {
                             <h2 className="ticket-what">{ticket.name}</h2>
                             <p className="ticket-where">{ticket.where} </p>
                             <p className="ticket-date">{ticket.when.date} kl {ticket.when.from} - {ticket.when.to}</p>
-                            <p className="ticket-info">seat:{ticket.seat}section: {ticket.section}
-                            </p>
-                            <p className="ticket-id"> barcode </p>
+                            {/* <p className="ticket-info">seat:{ticket.seat}section: {ticket.section} </p> */}
+                            <p className="ticket-id">{ticket.id} barcode </p>
                         </li>
                     ))}
                 </ul>
