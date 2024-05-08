@@ -6,10 +6,12 @@
 
 .cart-button {
     background-color: #37AEAB;
+    font-family: 'fira sans', sans-serif;
     color: white;
     padding: 1rem 2rem;
     width: 70vw;
     font-weight: 600;
+    font-size: 22px;
     border: none;
     cursor: pointer;
     border-radius: 3px;

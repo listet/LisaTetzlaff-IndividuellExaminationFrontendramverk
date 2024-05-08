@@ -1,5 +1,4 @@
 import './event.css'
-// import { Link } from "react-router-dom"
 import useEventStore from '../../store/event-store';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +15,7 @@ function Event({ data }) {
             const parts = dateStr.split(" ");
             if (parts.length >= 2) { // Check if parts array has at least two elements
                 const day = parts[0];
-                const month = parts[1].slice(0, 3); // Slice the month if it exists
+                const month = parts[1].slice(0, 3).toUpperCase(); // Slice the month if it exists
                 return { day, month };
             }
         }
@@ -32,11 +31,10 @@ function Event({ data }) {
     }
 
     return (
-        // <Link to={`/EventPage/${data.name}`} className="event-link">
         <section className="event-container" onClick={(e) => goToEventPage(e)}>
             <article className='event-date'>
-                <p className='day'>{day}</p>
-                <p className='month'>{month}</p>
+                <p className='event-dateday'>{day}</p>
+                <p className='event-datemonth'>{month}</p>
             </article>
             <article className='event-info'>
                 <h2 className='event-title'>{data.name}</h2>
@@ -45,7 +43,6 @@ function Event({ data }) {
             </article>
             <p className='event-price'>{data.price}sek</p>
         </section>
-        // </Link>
     )
 }
 

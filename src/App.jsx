@@ -6,6 +6,7 @@ import FrontPage from './pages/frontPage/FrontPage'
 import EventsPage from './pages/eventsPage/EventsPage'
 import OrderPage from './pages/orderPage/OrderPage'
 import EventPage from './pages/eventPage/EventPage'
+import TicketsPage from './pages/ticketsPage/TicketsPage';
 import Nav from './components/nav/Nav'
 import useEventStore from './store/event-store';
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/FrontPage" element={<FrontPage />} />
         <Route path="/EventsPage" element={<EventsPage />} />
         <Route path="/OrderPage" element={<OrderPage />} />
+        <Route path="/TicketsPage" element={<TicketsPage />} />
         <Route path="/EventPage/:name" element={<EventPage />} />
       </Routes>
       <Nav />

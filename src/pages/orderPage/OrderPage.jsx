@@ -1,14 +1,14 @@
+import Button from '../../components/button/Button';
 import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store'
+import { Link } from 'react-router-dom';
 import './orderPage.css'
 
 function OrderPage() {
 
     const orders = useEventStore(state => state.orders);
     const setOrders = useEventStore(state => state.setOrders);
-
     console.log(orders)
-    // const totalPrice = 
 
     const handleDecreaseOrderBalance = (index) => {
         if (orders[index].qty === 1) {
@@ -28,6 +28,10 @@ function OrderPage() {
         setOrders(newOrders);
     };
 
+    const totalPrice = orders.reduce((total, order) => {
+        return total + (order.qty * order.price);
+    }, 0);
+
     return (
         <>
             <MainSection
@@ -35,8 +39,9 @@ function OrderPage() {
                 {orders.length > 0 ? (
                     <ul className='order-container'>
                         {orders.map((order, index) => (
-                            <li key={index}>
-                                <p>{order.name}</p>
+                            <li className='order' key={index}>
+                                <p className='order-name'>{order.name}</p>
+                                <p className='order-when'>{order.when.date} kl {order.when.from} - {order.when.to}</p>
                                 <section className='counter-container'>
                                     <button
                                         className="counter-btn"
@@ -53,13 +58,39 @@ function OrderPage() {
                     </ul>
 
                 ) : (
-                    <p>No orders</p>
+                    <p className='order-textvalue'>No orders</p>
                 )}
-                <p>Totalt värde på order</p>
-                {/* <h2>{totalPrice}</h2> */}
+                <p className='order-textTotalPrice'>Totalt värde på order</p>
+                <h2 className='order-totalPrice'>{totalPrice}</h2>
+                <Link aria-label='Navigate to orders' to="/TicketsPage">
+                    <Button buttonText="Skicka order" />
+                </Link>
+
             </MainSection >
         </>
     )
 }
 
 export default OrderPage
+
+
+// onClick={handleAddToCart}
+// const handleAddToCart = () => {
+
+//     const existingOrderIndex = orders.findIndex(order => order.id === event.id);
+
+//     if (existingOrderIndex !== -1) {
+
+//         const orderCopy = [...orders];
+//         orderCopy[existingOrderIndex].qty = event.qty;
+//         // Om eventet redan finns, uppdatera endast quantity
+
+//         setOrders(orderCopy);
+//     } else {
+//         // Om eventet inte finns, lägg till det nya eventet
+//         setOrders([...orders, { ...event }]);
+//     }
+
+// };
+
+// const totalPrice = event.qty * event.price;

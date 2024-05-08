@@ -1,3 +1,68 @@
-.order-container {
+.order-name {
+    font-family: var(--header-font);
+    color: var(--pink);
+    font-size: 24px;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.order-when {
+    font-family: 'fira sans', sans-serif;
+    color: var(--blue);
+    font-size: 14px;
+    padding-left: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.order {
     color: white;
+    border: 2px solid var(--pink);
+    margin: 1rem 0.5rem;
+    width: 60vw;
+    border-radius: 3px;
+}
+
+.counter-container {
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid var(--pink);
+}
+
+.counter-btn,
+.order-balance {
+    font-size: 1.5rem;
+    border-style: none;
+    padding: 1rem 0;
+}
+
+.order-balance {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    flex: 1;
+    text-align: center;
+    border-left: 2px solid var(--pink);
+    border-right: 2px solid var(--pink);
+    font-family: 'fira sans', sans-serif;
+}
+
+.counter-btn {
+    cursor: pointer;
+    flex: 2;
+}
+
+.order-textTotalPrice {
+    color: white;
+    margin: 1rem;
+    font-family: 'fira sans', sans-serif;
+    font-style: italic;
+    font-size: 19px;
+}
+
+.order-totalPrice {
+    font-family: 'fira sans', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: white;
+    text-shadow: 1px 1px var(--pink);
+    margin-bottom: 1rem;
 }
