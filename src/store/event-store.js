@@ -6,6 +6,8 @@ const useEventStore = create((set) => ({
     event: {},
     price: 0,
     orders: [],
+    tickets: [],
+    setTickets: (newTickets) => set({ tickets: newTickets }),
     setEvents: (newEvents) => {
         const eventsQty = newEvents.map(event => ({
             ...event, qty: 0

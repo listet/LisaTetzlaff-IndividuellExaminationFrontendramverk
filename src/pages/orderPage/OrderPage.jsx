@@ -3,11 +3,13 @@ import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store'
 import { Link } from 'react-router-dom';
 import './orderPage.css'
+import TicketId from '../../components/ticketId/TicketId';
 
 function OrderPage() {
 
     const orders = useEventStore(state => state.orders);
     const setOrders = useEventStore(state => state.setOrders);
+    const setTickets = useEventStore(state => state.setTickets);
     console.log(orders)
 
     const handleDecreaseOrderBalance = (index) => {
@@ -31,6 +33,11 @@ function OrderPage() {
     const totalPrice = orders.reduce((total, order) => {
         return total + (order.qty * order.price);
     }, 0);
+
+    const handleSetTickets = () => {
+        setTickets(orders);
+        setOrders([]);
+    }
 
     return (
         <>
@@ -58,12 +65,12 @@ function OrderPage() {
                     </ul>
 
                 ) : (
-                    <p className='order-textvalue'>No orders</p>
+                    <p className='order-textTotalPrice'>No orders</p>
                 )}
                 <p className='order-textTotalPrice'>Totalt värde på order</p>
                 <h2 className='order-totalPrice'>{totalPrice}</h2>
                 <Link aria-label='Navigate to orders' to="/TicketsPage">
-                    <Button buttonText="Skicka order" />
+                    <Button onClick={handleSetTickets} buttonText="Skicka order" />
                 </Link>
 
             </MainSection >
@@ -73,24 +80,3 @@ function OrderPage() {
 
 export default OrderPage
 
-
-// onClick={handleAddToCart}
-// const handleAddToCart = () => {
-
-//     const existingOrderIndex = orders.findIndex(order => order.id === event.id);
-
-//     if (existingOrderIndex !== -1) {
-
-//         const orderCopy = [...orders];
-//         orderCopy[existingOrderIndex].qty = event.qty;
-//         // Om eventet redan finns, uppdatera endast quantity
-
-//         setOrders(orderCopy);
-//     } else {
-//         // Om eventet inte finns, lägg till det nya eventet
-//         setOrders([...orders, { ...event }]);
-//     }
-
-// };
-
-// const totalPrice = event.qty * event.price;
