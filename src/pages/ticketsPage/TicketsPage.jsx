@@ -49,8 +49,8 @@ function TicketsPage() {
                                 </div>
                             </article>
                             <div className="ticket-info">
-                                <p>INFO</p>
-                                <p>section: {ticket.section} - seat:{ticket.seat}</p>
+                                <p className="ticket-info--span">INFO</p>
+                                <p className="ticket-info-seactionAndSeat">section: {ticket.section} - seat: {ticket.seat}</p>
                             </div>
                             <p className="ticket-barcode">barcode</p>
                             <p className="ticket-id">#{ticket.id} </p>

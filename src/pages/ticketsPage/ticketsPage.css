@@ -65,6 +65,7 @@
 .ticket-info {
     background-color: rgba(0, 0, 0, 0.09);
     font-family: 'fira sans', sans-serif;
+    padding: 1rem;
 }
 
 .ticket-info--border {
@@ -77,6 +78,11 @@
 .ticket-info--padding {
     padding: 1rem;
     flex: 1;
+}
+
+.ticket-info-seactionAndSeat {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 15px;
 }
 
 .ticket-barcode {
