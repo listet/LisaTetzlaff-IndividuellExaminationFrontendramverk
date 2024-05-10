@@ -11,7 +11,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 90vh;
     text-decoration: none;
     overflow: auto;
 }
@@ -19,9 +18,20 @@
 .ticket-container {
     display: flex;
     flex-direction: column;
-    width: 25rem;
+    width: 20rem;
     background-color: #ffffff;
     margin: 2rem;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.ticket-info--span {
+    font-family: 'fira sans', sans-serif;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
 }
 
 .ticket-what {
@@ -31,22 +41,57 @@
     font-size: 26px;
     padding: 1rem;
     border-bottom: 1px dotted rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
 }
 
 .ticket-where {
     background-color: rgba(0, 0, 0, 0.03);
     border-bottom: 1px dotted rgba(0, 0, 0, 0.4);
+    font-family: 'fira sans', sans-serif;
+    padding: 1rem;
+}
+
+.ticket-info--bold {
+    font-weight: 700;
 }
 
 .ticket-date {
     background-color: rgba(0, 0, 0, 0.06);
     border-bottom: 1px dotted rgba(0, 0, 0, 0.4);
+    font-family: 'fira sans', sans-serif;
+    display: flex;
 }
 
 .ticket-info {
     background-color: rgba(0, 0, 0, 0.09);
+    font-family: 'fira sans', sans-serif;
+}
+
+.ticket-info--border {
+    border-left: 1px dotted rgba(0, 0, 0, 0.4);
+    border-right: 1px dotted rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+    flex: 1;
+}
+
+.ticket-info--padding {
+    padding: 1rem;
+    flex: 1;
+}
+
+.ticket-barcode {
+    background-color: rgba(0, 0, 0, 0.12);
+    font-family: 'libre barcode 128';
+    font-size: 101px;
+    text-align: center;
+    padding-top: 2rem;
 }
 
 .ticket-id {
     background-color: rgba(0, 0, 0, 0.12);
+    text-align: center;
+    padding-bottom: 2rem;
+    font-family: 'fira sans', sans-serif;
+    color: rgba(0, 0, 0, 0.4);
+    letter-spacing: 5px;
 }

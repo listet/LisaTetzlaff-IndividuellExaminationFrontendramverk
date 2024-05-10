@@ -4,14 +4,10 @@ import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store';
 import Counter from '../../components/counter/Counter';
 import './eventPage.css'
-// import axios from 'axios';
-// import Button from '../../components/button/Button';
-// import { Link } from 'react-router-dom';
 
 function EventPage() {
 
     const { name } = useParams();
-    // const events = useEventStore((state) => state.events);
     const { event } = useEventStore((state) => ({
         event: state.event,
     }));

@@ -3,7 +3,6 @@ import MainSection from '../../components/mainSection/MainSection'
 import useEventStore from '../../store/event-store'
 import { Link } from 'react-router-dom';
 import './orderPage.css'
-import { TicketId } from '../../components/ticketId/TicketId';
 
 function OrderPage() {
 
@@ -39,9 +38,10 @@ function OrderPage() {
         // Generate unique IDs for each ticket and create tickets based on quantity
         orders.forEach(order => {
             for (let i = 0; i < order.qty; i++) {
+                const ticketId = Math.random().toString(36).substr(2, 5).toUpperCase(); // Generate a random alphanumeric string, // Generate a unique ID for each ticket
                 newTickets.push({
                     ...order,
-                    id: TicketId(), // Generate a unique ID for each ticket
+                    id: ticketId,
                 });
             }
         });
