@@ -1,14 +1,16 @@
 import { create } from "zustand";
 
-//definierar ett antal properties och metoder för att uppdatera dessa properties
+//Skapar en hook - useEventStore
 const useEventStore = create((set) => ({
+    // Initialisera tillståndet med standardvärden
     events: [],
     event: {},
-    price: 0,
     orders: [],
+    price: 0,
     tickets: [],
-    setTickets: (newTickets) => set({ tickets: newTickets }),
+    // Skapar metod för att sätta nya värden i sin store
     setEvents: (newEvents) => {
+        //Lägger till egenskapen qty (quantity)
         const eventsQty = newEvents.map(event => ({
             ...event, qty: 0
         }));
@@ -21,6 +23,7 @@ const useEventStore = create((set) => ({
         set({ orders: newOrders })
     },
     setPrice: (price) => set({ price }),
+    setTickets: (newTickets) => set({ tickets: newTickets }),
     clearEvents: () => set({ events: [] }),
     clearOrders: () => set({ orders: [] }),
 }));

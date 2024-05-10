@@ -12,19 +12,20 @@ import useEventStore from './store/event-store';
 
 function App() {
 
-  const setEvents = useEventStore(state => state.setEvents); // Hämta setEvents från storen
+  // Hämta setEvents från storen
+  const setEvents = useEventStore(state => state.setEvents);
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get(`https://santosnr6.github.io/Data/events.json`)
-        setEvents(response.data.events); // Använd setEvents för att uppdatera events i storen
-        console.log('Fetched events:', response.data.events);
+        // Använd setEvents för att uppdatera events i storen från API
+        setEvents(response.data.events);
       } catch (error) {
         console.error('Error fetching events:', error);
       }
     };
-
+    //Kallar på funktionen fetchEvents
     fetchEvents();
   }, []);
 

@@ -13,6 +13,7 @@
     width: 100%;
     text-decoration: none;
     overflow: auto;
+    padding-bottom: 4rem;
 }
 
 .ticket-container {
