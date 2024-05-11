@@ -4,9 +4,9 @@ function Button({ buttonText, onClick }) {
 
     //En enhetlig knapp-design
     return (
-        <div>
+        <article>
             <button className='cart-button' onClick={onClick}>{buttonText}</button>
-        </div>
+        </article>
     )
 }
 

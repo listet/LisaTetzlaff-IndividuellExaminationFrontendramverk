@@ -5,7 +5,6 @@ import './ticketsPage.css'
 function TicketsPage() {
 
     const tickets = useEventStore(state => state.tickets);
-    console.log(tickets)
 
     function formatDate(dateStr) {
         if (dateStr) {
@@ -21,15 +20,15 @@ function TicketsPage() {
     }
 
     return (
-        <div className="tickets-container">
+        <section className="tickets-container">
             {tickets.length > 0 ? (
                 <ul>
                     {tickets.map((ticket, index) => (
                         <li className="ticket-container" key={index}>
-                            <h2 className="ticket-what">
+                            <article className="ticket-what">
                                 <p className="ticket-info--span">WHAT</p>
-                                <p>{ticket.name}</p>
-                            </h2>
+                                <h2>{ticket.name}</h2>
+                            </article>
                             <article className="ticket-where">
                                 <p className="ticket-info--span">WHERE</p>
                                 <p className="ticket-info--bold">{ticket.where}</p>
@@ -58,9 +57,9 @@ function TicketsPage() {
                     ))}
                 </ul>
             ) : (
-                <p>No tickets</p>
+                <p className="ticket-what">No tickets</p>
             )}
-        </div>
+        </section>
     );
 }
 

@@ -1,41 +1,46 @@
 
 function TicketsSectionSeats(orders) {
 
+    //Tom array för nya biljetter
     const newTickets = [];
 
-    // Function to get a random section
+    // Funktion för att få en random section
     const getRandomSection = () => {
-        const sections = ['A', 'B', 'C', 'D', 'E', 'F', 'G']; // Example sections
+        const sections = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
         const randomIndex = Math.floor(Math.random() * sections.length);
         return sections[randomIndex];
     };
 
-    // Function to get random seats
+    // Funktion för att få en random plats (om det är flera platser på samma event - platser bredvid varandra). 
     const getRandomSeats = (qty) => {
         const seats = [];
-        const seatsPerSection = 30; // Example number of seats per section
-        const startSeat = Math.floor(Math.random() * (seatsPerSection - qty)) + 1; // Generate a random starting seat
+        const seatsPerSection = 30;
+        const startSeat = Math.floor(Math.random() * (seatsPerSection - qty)) + 1;
+        // Skapa en array med platser, börjar från startSeat och ökar med 1 för varje iteration.
         for (let i = 0; i < qty; i++) {
-            seats.push(startSeat + i); // Push consecutive seats
+            seats.push(startSeat + i);
         }
         return seats;
     };
 
-    // Generate unique IDs for each ticket and create tickets based on quantity
+    // Genererar biljetter och unika ID´n för varje biljett
     orders.forEach(order => {
-        const sections = {}; // Track sections and available seats for each event
+        const sections = {};
         for (let i = 0; i < order.qty; i++) {
             const eventId = order.eventId;
             if (!sections[eventId]) {
-                // If no sections are generated for this event, generate one
+                // Kallar på funktionerna för section och seats
                 sections[eventId] = {
                     section: getRandomSection(),
                     seats: getRandomSeats(order.qty)
                 };
             }
             const { section, seats } = sections[eventId];
+            //genererar unikt ID
             const ticketId = Math.random().toString(36).substr(2, 5).toUpperCase();
-            const seat = seats.shift(); // Get the first available seat
+            //Går igenom seats och tilldelar seat
+            const seat = seats.shift();
+            // Ny biljett med id, section och seat
             newTickets.push({
                 ...order,
                 id: ticketId,
@@ -45,7 +50,7 @@ function TicketsSectionSeats(orders) {
         }
     });
 
-    return newTickets; // Return the generated tickets
+    return newTickets;
 };
 
 export default TicketsSectionSeats;

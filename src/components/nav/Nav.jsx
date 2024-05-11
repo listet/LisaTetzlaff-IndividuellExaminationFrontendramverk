@@ -13,6 +13,9 @@ function Nav() {
             <Link aria-label='Navigate to orders' className='nav-item' to="/OrderPage">
                 <p>Orders</p>
             </Link>
+            <Link aria-label='Navigate to tickets' className='nav-item' to="/TicketsPage">
+                <p>Tickets</p>
+            </Link>
         </nav>
 
     )

@@ -11,6 +11,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    min-height: 100vh;
     text-decoration: none;
     overflow: auto;
     padding-bottom: 4rem;
@@ -39,7 +40,7 @@
     background-color: #ffffff;
     font-family: var(--header-font);
     color: var(--pink);
-    font-size: 26px;
+    font-size: 1.5em;
     padding: 1rem;
     border-bottom: 1px dotted rgba(0, 0, 0, 0.4);
     border-radius: 5px;

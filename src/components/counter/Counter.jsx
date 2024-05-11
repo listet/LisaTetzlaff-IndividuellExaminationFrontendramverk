@@ -45,10 +45,10 @@ function Counter({ event }) {
     return (
         <>
             <section className='priceAndCounter-container'>
-                <section className='price-container'>
+                <article className='price-container'>
                     <p className="price">{totalPrice} sek</p>
-                </section>
-                <section className='counter-container'>
+                </article>
+                <article className='counter-container'>
                     <button
                         className="counter-btn"
                         onClick={handleDecreaseEventBalance}
@@ -58,7 +58,7 @@ function Counter({ event }) {
                         className="counter-btn"
                         onClick={handleIncreaseEventBalance}
                     >+</button>
-                </section>
+                </article>
             </section>
             <Link aria-label='Navigate to orders' to="/OrderPage">
                 <Button onClick={handleAddToCart} buttonText="Lägg i varukorgen" />

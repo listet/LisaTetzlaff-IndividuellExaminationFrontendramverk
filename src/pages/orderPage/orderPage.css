@@ -1,7 +1,7 @@
 .order-name {
     font-family: var(--header-font);
     color: var(--pink);
-    font-size: 24px;
+    font-size: 1.5em;
     padding-left: 0.5rem;
     padding-top: 0.5rem;
 }
@@ -9,7 +9,7 @@
 .order-when {
     font-family: 'fira sans', sans-serif;
     color: var(--blue);
-    font-size: 14px;
+    font-size: 0.9em;
     padding-left: 0.5rem;
     padding-bottom: 0.5rem;
 }
@@ -51,19 +51,19 @@
     flex: 2;
 }
 
-.order-textTotalPrice {
+.order-text {
     color: white;
     margin: 1rem;
     font-family: 'fira sans', sans-serif;
     font-style: italic;
-    font-size: 19px;
+    font-size: 1.3em;
 }
 
 .order-totalPrice {
     font-family: 'fira sans', sans-serif;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 2em;
     color: white;
     text-shadow: 1px 1px var(--pink);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
