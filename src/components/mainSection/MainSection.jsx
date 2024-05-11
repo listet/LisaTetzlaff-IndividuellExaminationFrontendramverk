@@ -1,10 +1,13 @@
 import "./mainSection.css"
 
 function MainSection({ mainTitle, children }) {
+
+    //Formar en enhetlig design 
     return (
         <section className="container">
             <h1 className="title">{mainTitle}</h1>
-            {children} {/* Lägg till denna rad för att rendera barnkomponenter */}
+            {/* renderar barnkomponenter i MainSection */}
+            {children}
         </section>
     )
 }
