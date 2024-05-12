@@ -27,6 +27,7 @@
     font-weight: 700;
 }
 
+.nav-item-active,
 .nav-item:active {
     background-color: #ba5073;
     font-weight: 700;
