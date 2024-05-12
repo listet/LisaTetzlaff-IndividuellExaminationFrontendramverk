@@ -1,63 +1,62 @@
 import useEventStore from "../../store/event-store";
-
 import './ticketsPage.css'
 
 function TicketsPage() {
 
     const tickets = useEventStore(state => state.tickets);
 
+    //Delar datumet i when för att endast få de tre första boktäverna i månaden
     function formatDate(dateStr) {
         if (dateStr) {
             const parts = dateStr.split(" ");
-            if (parts.length >= 2) { // Check if parts array has at least two elements
-                const month = parts[1].slice(0, 3); // Slice the month if it exists
+            if (parts.length >= 2) {
+                const month = parts[1].slice(0, 3);
                 const day = parts[0];
                 return `${day} ${month}`;
             }
-            // If dateStr is not defined or doesn't have expected format, return empty strings
             return "";
         }
     }
 
     return (
-        <section className="tickets-container">
+        <section className="tickets">
             {tickets.length > 0 ? (
                 <ul>
                     {tickets.map((ticket, index) => (
-                        <li className="ticket-container" key={index}>
-                            <article className="ticket-what">
-                                <p className="ticket-info--span">WHAT</p>
+                        <li className="tickets__list" key={index}>
+                            <section className="ticket__info--what">
+                                <p className="ticket__label">WHAT</p>
                                 <h2>{ticket.name}</h2>
+                            </section>
+                            <section className="ticket__info--where">
+                                <p className="ticket__label">WHERE</p>
+                                <p className="ticket__detail--bold">{ticket.where}</p>
+                            </section>
+                            <section className="ticket__info--date">
+                                <article className="ticket__detail--padding">
+                                    <p className="ticket__label">WHEN</p>
+                                    <p className="ticket__detail--bold">{formatDate(ticket.when.date)}</p>
+                                </article>
+                                <article className="ticket__detail--border">
+                                    <p className="ticket__label">FROM</p>
+                                    <p className="ticket__detail--bold">{ticket.when.from}</p>
+                                </article>
+                                <article className="ticket__detail--padding">
+                                    <p className="ticket__label">TO</p>
+                                    <p className="ticket__detail--bold">{ticket.when.to}</p>
+                                </article>
+                            </section>
+                            <article className="ticket__info">
+                                <p className="ticket__label">INFO</p>
+                                <p className="ticket__detail--sectionAndSeat">section: {ticket.section} - seat: {ticket.seat}</p>
                             </article>
-                            <article className="ticket-where">
-                                <p className="ticket-info--span">WHERE</p>
-                                <p className="ticket-info--bold">{ticket.where}</p>
-                            </article>
-                            <article className="ticket-date">
-                                <div className="ticket-info--padding">
-                                    <p className="ticket-info--span">WHEN</p>
-                                    <p className="ticket-info--bold">{formatDate(ticket.when.date)}</p>
-                                </div>
-                                <div className="ticket-info--border">
-                                    <p className="ticket-info--span">FROM</p>
-                                    <p className="ticket-info--bold">{ticket.when.from}</p>
-                                </div>
-                                <div className="ticket-info--padding">
-                                    <p className="ticket-info--span">TO</p>
-                                    <p className="ticket-info--bold">{ticket.when.to}</p>
-                                </div>
-                            </article>
-                            <div className="ticket-info">
-                                <p className="ticket-info--span">INFO</p>
-                                <p className="ticket-info-seactionAndSeat">section: {ticket.section} - seat: {ticket.seat}</p>
-                            </div>
-                            <p className="ticket-barcode">barcode</p>
-                            <p className="ticket-id">#{ticket.id} </p>
+                            <p className="ticket__barcode">barcode</p>
+                            <p className="ticket__id">#{ticket.id} </p>
                         </li>
                     ))}
                 </ul>
             ) : (
-                <p className="ticket-what">No tickets</p>
+                <p className="ticket__info--what">No tickets</p>
             )}
         </section>
     );

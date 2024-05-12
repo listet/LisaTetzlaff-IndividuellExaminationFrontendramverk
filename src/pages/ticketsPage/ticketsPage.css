@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.tickets-container {
+.tickets {
     background: linear-gradient(180deg, var(--pink) 0%, rgba(105, 49, 123, 1) 30%, var(--purple)50%);
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
     padding-bottom: 4rem;
 }
 
-.ticket-container {
+.tickets__list {
     display: flex;
     flex-direction: column;
     width: 20rem;
@@ -27,7 +27,7 @@
     overflow: auto;
 }
 
-.ticket-info--span {
+.ticket__label {
     font-family: 'fira sans', sans-serif;
     color: rgba(0, 0, 0, 0.4);
     font-size: 10px;
@@ -36,7 +36,7 @@
     margin-bottom: 5px;
 }
 
-.ticket-what {
+.ticket__info--what {
     background-color: #ffffff;
     font-family: var(--header-font);
     color: var(--pink);
@@ -46,48 +46,48 @@
     border-radius: 5px;
 }
 
-.ticket-where {
+.ticket__info--where {
     background-color: rgba(0, 0, 0, 0.03);
     border-bottom: 1px dotted rgba(0, 0, 0, 0.4);
     font-family: 'fira sans', sans-serif;
     padding: 1rem;
 }
 
-.ticket-info--bold {
-    font-weight: 700;
-}
-
-.ticket-date {
+.ticket__info--date {
     background-color: rgba(0, 0, 0, 0.06);
     border-bottom: 1px dotted rgba(0, 0, 0, 0.4);
     font-family: 'fira sans', sans-serif;
     display: flex;
 }
 
-.ticket-info {
+.ticket__info {
     background-color: rgba(0, 0, 0, 0.09);
     font-family: 'fira sans', sans-serif;
     padding: 1rem;
 }
 
-.ticket-info--border {
+.ticket__detail--bold {
+    font-weight: 700;
+}
+
+.ticket__detail--border {
     border-left: 1px dotted rgba(0, 0, 0, 0.4);
     border-right: 1px dotted rgba(0, 0, 0, 0.4);
     padding: 1rem;
     flex: 1;
 }
 
-.ticket-info--padding {
+.ticket__detail--padding {
     padding: 1rem;
     flex: 1;
 }
 
-.ticket-info-seactionAndSeat {
+.ticket__detail--sectionAndSeat {
     color: rgba(0, 0, 0, 0.6);
     font-size: 15px;
 }
 
-.ticket-barcode {
+.ticket__barcode {
     background-color: rgba(0, 0, 0, 0.12);
     font-family: 'libre barcode 128';
     font-size: 101px;
@@ -95,7 +95,7 @@
     padding-top: 2rem;
 }
 
-.ticket-id {
+.ticket__id {
     background-color: rgba(0, 0, 0, 0.12);
     text-align: center;
     padding-bottom: 2rem;

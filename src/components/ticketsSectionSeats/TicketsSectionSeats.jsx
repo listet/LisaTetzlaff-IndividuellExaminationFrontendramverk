@@ -37,7 +37,7 @@ function TicketsSectionSeats(orders) {
             }
             const { section, seats } = sections[eventId];
             //genererar unikt ID
-            const ticketId = Math.random().toString(36).substr(2, 5).toUpperCase();
+            const ticketId = Math.random().toString(36).slice(2, 7).toUpperCase();
             //Går igenom seats och tilldelar seat
             const seat = seats.shift();
             // Ny biljett med id, section och seat
