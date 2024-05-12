@@ -17,7 +17,7 @@
     padding-bottom: 4rem;
 }
 
-.tickets__list {
+.ticket {
     display: flex;
     flex-direction: column;
     width: 20rem;

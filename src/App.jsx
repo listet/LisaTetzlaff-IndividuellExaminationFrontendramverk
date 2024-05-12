@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import { CSSTransition } from 'react-transition-group';
 import './App.css'
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -29,16 +30,26 @@ function App() {
     fetchEvents();
   }, []);
 
+
+  //Använder hook-en useLocation för genomgående animering
+  const location = useLocation();
+
   return (
     <>
-      <Routes>
-        <Route path="/" element={<FrontPage />} />
-        <Route path="/FrontPage" element={<FrontPage />} />
-        <Route path="/EventsPage" element={<EventsPage />} />
-        <Route path="/OrderPage" element={<OrderPage />} />
-        <Route path="/TicketsPage" element={<TicketsPage />} />
-        <Route path="/EventPage/:name" element={<EventPage />} />
-      </Routes>
+      <CSSTransition
+        key={location.key}
+        timeout={200}
+        classNames="fade"
+      >
+        <Routes location={location}>
+          <Route path="/" element={<FrontPage />} />
+          <Route path="/FrontPage" element={<FrontPage />} />
+          <Route path="/EventsPage" element={<EventsPage />} />
+          <Route path="/OrderPage" element={<OrderPage />} />
+          <Route path="/TicketsPage" element={<TicketsPage />} />
+          <Route path="/EventPage/:name" element={<EventPage />} />
+        </Routes>
+      </CSSTransition>
       <Nav />
     </>
   )

@@ -21,9 +21,9 @@ function TicketsPage() {
     return (
         <section className="tickets">
             {tickets.length > 0 ? (
-                <ul>
+                <ul className="tickets__container">
                     {tickets.map((ticket, index) => (
-                        <li className="tickets__list" key={index}>
+                        <li key={index} className="ticket">
                             <section className="ticket__info--what">
                                 <p className="ticket__label">WHAT</p>
                                 <h2>{ticket.name}</h2>
@@ -58,7 +58,7 @@ function TicketsPage() {
             ) : (
                 <p className="ticket__info--what">No tickets</p>
             )}
-        </section>
+        </section >
     );
 }
 
