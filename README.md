@@ -1,6 +1,6 @@
 # LisaTetzlaff-IndivuduellExaminationFrontendramverk
 
-För att köra appen: kör i terminalen "npm i" samt därefter "npm run dev"
+För att köra appen: kör "npm i" samt därefter "npm run dev" i terminalen
 
 ## Where It's @
 
