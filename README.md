@@ -1,6 +1,8 @@
 # LisaTetzlaff-IndivuduellExaminationFrontendramverk
 
-Where It's @
+För att köra appen: kör i terminalen "npm i" samt därefter "npm run dev"
+
+## Where It's @
 
 Jag har använt mig av två ytterligare Hooks:
 **useNavigate** samt **useLocation**.
